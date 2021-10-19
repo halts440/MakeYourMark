@@ -9,7 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MakeYourMark">
-        <activity android:name=".SignIn"></activity>
+        <activity android:name=".SellerAllProducts"></activity>
+        <activity android:name=".SellerOrders" />
+        <activity android:name=".BuyerOrders" />
+        <activity android:name=".Collections" />
+        <activity android:name=".SearchResults" />
+        <activity android:name=".AddProduct" />
+        <activity android:name=".ProductDetails" />
+        <activity android:name=".BuyerMainPage" />
+        <activity android:name=".SellerMainPage" />
+        <activity android:name=".SellerSignup" />
+        <activity android:name=".BuyerSignup" />
+        <activity android:name=".SignUpOptions" />
+        <activity android:name=".SignIn" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".MainActivity">
             <intent-filter>

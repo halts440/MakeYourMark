@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignIn"
+    tools:context=".SignUpOptions"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -41,29 +41,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email">
+                    android:text="If you plan on buying stationary items sign up for a buyer profile. Hundreds of new products are added everyday">
                 </TextView>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
-
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Password">
-                </TextView>
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
 
                 <Button
                     android:textColor="@color/white"
@@ -71,38 +52,28 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign In"
+                    android:text="Create   Buyer   Account"
+                    android:padding="15dp"
                     android:background="@color/dark_pink">
                 </Button>
 
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:layout_marginTop="30dp"
+                <TextView
+                    android:layout_marginTop="50dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Do not have account?">
-                    </TextView>
+                    android:text="If you plan on selling stationary items, create a buyer profile. You can take your small stationary business to next level">
+                </TextView>
 
-                    <Button
-                        android:textColor="@color/white"
-                        android:background="@color/teal_700"
-                        android:layout_marginLeft="30dp"
-                        android:layout_gravity="right"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Sign up">
-                    </Button>
-
-                </LinearLayout>
-
-
-
+                <Button
+                    android:padding="15dp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create   Seller   Account"
+                    android:background="@color/dark_pink">
+                </Button>
 
             </LinearLayout>
 

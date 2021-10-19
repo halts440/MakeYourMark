@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:src="@drawable/a4_sheets"
+        android:scaleType="centerCrop"
+        android:layout_width="150dp"
+        android:layout_height="150dp">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A4 Sheets">
+        </TextView>
+
+        <TextView
+            android:textSize="17dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price: 20 Rs">
+        </TextView>
+
+        <TextView
+            android:textSize="17dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available: 5">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
