@@ -40,12 +40,11 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/b_icons">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_above="@id/b_icons"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"></androidx.recyclerview.widget.RecyclerView>
 
         <RelativeLayout
             android:paddingTop="10dp"

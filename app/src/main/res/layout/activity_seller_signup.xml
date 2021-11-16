@@ -47,6 +47,7 @@
                     android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/sBusinessName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </EditText>
@@ -60,6 +61,7 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/sEmail"
                     android:inputType="textEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -74,6 +76,7 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/sPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </EditText>
@@ -87,13 +90,13 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/sLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </EditText>
 
-
-
                 <Button
+                    android:id="@+id/sCreate"
                     android:textColor="@color/white"
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"

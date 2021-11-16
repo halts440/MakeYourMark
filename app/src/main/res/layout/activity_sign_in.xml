@@ -48,6 +48,7 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/lEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </EditText>
@@ -61,11 +62,13 @@
                 </TextView>
 
                 <EditText
+                    android:id="@+id/lPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </EditText>
 
                 <Button
+                    android:id="@+id/lSignIn"
                     android:textColor="@color/white"
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"
@@ -90,6 +93,7 @@
                     </TextView>
 
                     <Button
+                        android:id="@+id/lSignUp"
                         android:textColor="@color/white"
                         android:background="@color/teal_700"
                         android:layout_marginLeft="30dp"

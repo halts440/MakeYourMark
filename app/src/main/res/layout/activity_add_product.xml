@@ -29,93 +29,98 @@
         android:orientation="vertical">
 
         <ScrollView
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true">
 
             <LinearLayout
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="45dp"
                 android:orientation="vertical">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Product">
-                </TextView>
+                    android:text="Add Product"
+                    android:textSize="30dp"></TextView>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Product Name">
-                </TextView>
+                    android:text="Product Name"
+                    android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/pName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
+                    android:layout_height="wrap_content"></EditText>
 
                 <TextView
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Price">
-                </TextView>
+                    android:layout_marginTop="20dp"
+                    android:text="Price"
+                    android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/pPrice"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
+                    android:layout_height="wrap_content"></EditText>
 
                 <TextView
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Description">
-                </TextView>
+                    android:layout_marginTop="20dp"
+                    android:text="Description"
+                    android:textStyle="bold"></TextView>
 
                 <EditText
+                    android:id="@+id/pDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
+                    android:layout_height="wrap_content"></EditText>
 
                 <TextView
-                    android:layout_marginTop="20dp"
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Image">
-                </TextView>
+                    android:layout_marginTop="20dp"
+                    android:text="Stock"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/pStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></EditText>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Image"
+                    android:textStyle="bold"></TextView>
 
                 <ImageView
-                    android:layout_marginTop="30dp"
-                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/pImage"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    android:src="@drawable/default_image"
-                    android:scaleType="centerCrop">
-                </ImageView>
-
-
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/default_image"></ImageView>
 
                 <Button
-                    android:textColor="@color/white"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center"
+                    android:id="@+id/pAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/dark_pink"
                     android:text="Add"
-                    android:background="@color/dark_pink">
-                </Button>
+                    android:textColor="@color/white"></Button>
 
             </LinearLayout>
         </ScrollView>
