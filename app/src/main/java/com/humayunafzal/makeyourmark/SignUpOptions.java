@@ -19,6 +19,7 @@ public class SignUpOptions extends AppCompatActivity {
         optCreateBuyer = findViewById(R.id.optCreateBuyer);
         optCreateSeller = findViewById(R.id.optCreateSeller);
 
+        // if user wants to create buyer profile, open the signup page for buyers
         optCreateBuyer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -27,6 +28,7 @@ public class SignUpOptions extends AppCompatActivity {
             }
         });
 
+        // if user wants to create seller profile, open the signup page for sellers
         optCreateSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

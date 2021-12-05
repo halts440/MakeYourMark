@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MakeYourMark</string>
+    <string name="my_ip_address">192.168.43.118</string>
 </resources>
