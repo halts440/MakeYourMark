@@ -23,8 +23,6 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:orientation="vertical"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
@@ -35,14 +33,36 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:weightSum="2"
                 android:paddingBottom="40dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_margin="20dp"
+                    android:id="@+id/pImage"
+                    android:layout_gravity="center"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/default_image">
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+                <TextView
+                    android:layout_margin="20dp"
+                    android:id="@+id/bName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Business Name">
+                </TextView>
+
+
                 <LinearLayout
-                    android:background="@color/teal_700"
+                    android:backgroundTint="@color/teal_700"
+                    android:background="@drawable/rounded_background"
                     android:elevation="10dp"
                     android:padding="30dp"
                     android:gravity="center"
@@ -71,7 +91,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:background="#8000FF"
+                    android:background="@drawable/rounded_background"
+                    android:backgroundTint="#8000FF"
                     android:layout_marginTop="15dp"
                     android:padding="30dp"
                     android:gravity="center"
@@ -107,13 +128,18 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:textSize="20dp"
-                        android:elevation="10dp"
+                        android:background="@drawable/rounded_background"
+                        android:id="@+id/add_product_btn"
+                        android:textSize="18dp"
+                        android:elevation="5dp"
                         android:textColor="@color/white"
-                        android:background="#DC00FF"
-                        android:layout_margin="10dp"
+                        android:backgroundTint="#DC00FF"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:padding="50dp"
+                        android:paddingTop="50dp"
+                        android:paddingBottom="50dp"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -121,13 +147,18 @@
                     </TextView>
 
                     <TextView
+                        android:background="@drawable/rounded_background"
+                        android:id="@+id/manage_products_btn"
                         android:textSize="20dp"
-                        android:elevation="10dp"
+                        android:elevation="5dp"
                         android:textColor="@color/white"
-                        android:background="#DC00FF"
-                        android:layout_margin="10dp"
+                        android:backgroundTint="#DC00FF"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
-                        android:padding="30dp"
+                        android:paddingTop="50dp"
+                        android:paddingBottom="50dp"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -136,6 +167,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/view_orders"
                     android:background="#43C862"
                     android:layout_marginTop="15dp"
                     android:padding="50dp"
@@ -147,7 +179,7 @@
                     <TextView
                         android:textColor="@color/white"
                         android:textSize="25dp"
-                        android:text="Manage Products"
+                        android:text="View Orders"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
                     </TextView>

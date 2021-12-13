@@ -38,7 +38,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/pdImage"
+                    android:id="@+id/pImage"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:src="@drawable/a4_sheets"
@@ -61,7 +61,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/pdName"
+                            android:id="@+id/pName"
                             android:textSize="25dp"
                             android:layout_weight="2"
                             android:layout_width="0dp"
@@ -70,7 +70,7 @@
                         </TextView>
 
                         <TextView
-                            android:id="@+id/pdPrice"
+                            android:id="@+id/pPrice"
                             android:gravity="center"
                             android:layout_weight="1"
                             android:textSize="25dp"
@@ -81,12 +81,11 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/pdDescription"
-                        android:layout_marginTop="20dp"
+                        android:id="@+id/pDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="You will receive one carton of copy paper, which includes 5 individual reams of paper inside. Each ream of paper has 500 sheets of 20 pounds, 92 bright, 8.5 x 11 white copy paper">
-                    </TextView>
+                        android:layout_marginTop="20dp"
+                        android:text="You will receive one carton of copy paper, which includes 5 individual reams of paper inside. Each ream of paper has 500 sheets of 20 pounds, 92 bright, 8.5 x 11 white copy paper"></TextView>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -102,7 +101,7 @@
                         </TextView>
 
                         <NumberPicker
-                            android:id="@+id/pdQuantity"
+                            android:id="@+id/quantity"
                             android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="100dp"></NumberPicker>
@@ -110,7 +109,7 @@
                     </RelativeLayout>
 
                     <Button
-                        android:id="@+id/pdBuy"
+                        android:id="@+id/buy_btn"
                         android:textColor="@color/white"
                         android:background="@color/prime_blue"
                         android:layout_gravity="center"

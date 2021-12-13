@@ -3,6 +3,7 @@
     package="com.humayunafzal.makeyourmark">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
@@ -18,17 +19,19 @@
         <activity android:name=".SearchResults" />
         <activity android:name=".AddProduct" />
         <activity android:name=".ProductDetails" />
-        <activity android:name=".BuyerMainPage" />
-        <activity android:name=".SellerMainPage" />
+        <activity android:name=".BuyerMainPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SellerMainPage">
+        </activity>
         <activity android:name=".SellerSignup" />
         <activity android:name=".BuyerSignup" />
         <activity android:name=".SignUpOptions" />
         <activity android:name=".SignIn" />
         <activity android:name=".SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
     </application>

@@ -57,6 +57,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/BMP_tv1"
                     android:textSize="25dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,11 +65,13 @@
                 </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_BMP1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
+                    android:id="@+id/BMP_tv2"
                     android:layout_marginTop="50dp"
                     android:textSize="25dp"
                     android:layout_width="wrap_content"
@@ -77,11 +80,13 @@
                 </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_BMP2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </androidx.recyclerview.widget.RecyclerView>
 
                 <TextView
+                    android:id="@+id/BMP_tv3"
                     android:layout_marginTop="50dp"
                     android:textSize="25dp"
                     android:layout_width="wrap_content"
@@ -90,6 +95,7 @@
                 </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_BMP3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </androidx.recyclerview.widget.RecyclerView>s

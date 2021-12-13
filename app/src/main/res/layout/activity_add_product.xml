@@ -39,6 +39,7 @@
                 android:layout_marginLeft="45dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="45dp"
+                android:paddingBottom="80dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -111,6 +112,18 @@
                     android:layout_marginTop="30dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/default_image"></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Category"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/pCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></EditText>
 
                 <Button
                     android:id="@+id/pAdd"

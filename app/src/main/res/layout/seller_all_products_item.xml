@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:weightSum="3"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="15dp">
+
+    <ImageView
+        android:id="@+id/pImage"
+        android:scaleType="centerCrop"
+        android:layout_weight="1"
+        android:src="@drawable/default_image"
+        android:layout_width="0dp"
+        android:layout_height="100dp">
+    </ImageView>
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/pName"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="Product title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/pPrice"
+            android:layout_margin="5dp"
+            android:textSize="18dp"
+            android:text="Price: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <TextView
+            android:id="@+id/pStock"
+            android:layout_margin="5dp"
+            android:textSize="18dp"
+            android:text="Stock: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
