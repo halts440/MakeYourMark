@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,9 +17,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BuyerMainPage extends AppCompatActivity {
 
@@ -24,9 +30,12 @@ public class BuyerMainPage extends AppCompatActivity {
     TextView BMP_tv1, BMP_tv2, BMP_tv3;
     String[] categories;
     FirebaseDatabase database;
-    DatabaseReference productsRef1, productsRef2, productsRef3, productsByCatRef1, productsByCatRef2, productsByCatRef3;
+    DatabaseReference productsRef1, productsRef2, productsRef3, productsByCatRef1, productsByCatRef2, productsByCatRef3, userRef;
     List<Product> productList1, productList2, productList3;
     String userId;
+    ImageView searchImg, ordersImg, collectionsImg;
+    CircleImageView uImage;
+    TextView uName, balance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +50,55 @@ public class BuyerMainPage extends AppCompatActivity {
         productsByCatRef1 = database.getReference("products_by_cat").child( categories[0] );
         productsByCatRef2 = database.getReference("products_by_cat").child( categories[1] );
         productsByCatRef3 = database.getReference("products_by_cat").child( categories[2] );
-        userId = getIntent().getStringExtra("user_id");
+        userId = "03674348951";//getIntent().getStringExtra("user_id");
+        searchImg = findViewById(R.id.searchImg);
+        ordersImg = findViewById(R.id.ordersImg);
+        collectionsImg = findViewById(R.id.collectionsImg);
+        uImage = findViewById(R.id.uImage);
+        uName = findViewById(R.id.uName);
+        balance = findViewById(R.id.balance);
+        userRef = database.getReference("users").child( userId );
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if( snapshot.getValue() != null ){
+                    User user = snapshot.getValue(User.class);
+                    Picasso.get().load( user.getImagePath() ).into( uImage );
+                    uName.setText( user.getName() );
+                    balance.setText( "Balance: " + user.getBalance() + " Rs" );
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
+        searchImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BuyerMainPage.this, Collections.class);
+                intent.putExtra("user_id", userId);
+                startActivity(intent);
+            }
+        });
+
+        ordersImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BuyerMainPage.this, Collections.class);
+                intent.putExtra("user_id", userId);
+                startActivity(intent);
+            }
+        });
+
+        collectionsImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BuyerMainPage.this, Collections.class);
+                intent.putExtra("user_id", userId);
+                startActivity(intent);
+            }
+        });
 
         rv_BMP1 = findViewById(R.id.rv_BMP1);
         rv_BMP2 = findViewById(R.id.rv_BMP2);
@@ -62,13 +119,13 @@ public class BuyerMainPage extends AppCompatActivity {
         rv_BMP1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true) );
         rv_BMP1.setAdapter(new BuyerMainPageProductsAdapter(this, productList1, userId));
 
-        rv_BMP2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) );
+        rv_BMP2.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true) );
         rv_BMP2.setAdapter(new BuyerMainPageProductsAdapter(this, productList2, userId));
 
         rv_BMP3.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false) );
         rv_BMP3.setAdapter(new BuyerMainPageProductsAdapter(this, productList3, userId));
 
-        productsByCatRef1.addListenerForSingleValueEvent(new ValueEventListener() {
+        productsByCatRef1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 productList1.clear();
@@ -77,18 +134,18 @@ public class BuyerMainPage extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             productList1.add( snapshot.getValue(Product.class) );
+                            rv_BMP1.getAdapter().notifyDataSetChanged();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
                     });
                 }
-                rv_BMP1.getAdapter().notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
 
-        productsByCatRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+        productsByCatRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 productList2.clear();
@@ -97,18 +154,18 @@ public class BuyerMainPage extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             productList2.add( snapshot.getValue(Product.class) );
+                            rv_BMP2.getAdapter().notifyDataSetChanged();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
                     });
                 }
-                rv_BMP2.getAdapter().notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
 
-        productsByCatRef3.addListenerForSingleValueEvent(new ValueEventListener() {
+        productsByCatRef3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 productList3.clear();
@@ -117,12 +174,12 @@ public class BuyerMainPage extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             productList3.add( snapshot.getValue(Product.class) );
+                            rv_BMP3.getAdapter().notifyDataSetChanged();
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
                     });
                 }
-                rv_BMP3.getAdapter().notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }

@@ -4,7 +4,8 @@
     android:weightSum="3"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_margin="15dp">
+    android:layout_margin="10dp"
+    android:id="@+id/wProduct">
 
     <ImageView
         android:id="@+id/pImage"

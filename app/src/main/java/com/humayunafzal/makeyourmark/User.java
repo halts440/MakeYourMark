@@ -6,16 +6,18 @@ public class User {
     private String location;
     private String imagePath;
     private String type;
+    private String balance;
 
     public User() {
     }
 
-    public User(String name, String phone, String location, String imagePath, String type) {
+    public User(String name, String phone, String location, String imagePath, String type, String balance) {
         this.name = name;
         this.phone = phone;
         this.location = location;
         this.imagePath = imagePath;
         this.type = type;
+        this.balance = balance;
     }
 
     public String getName() {
@@ -56,5 +58,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
     }
 }

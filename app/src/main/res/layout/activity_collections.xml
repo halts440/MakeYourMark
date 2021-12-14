@@ -13,14 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="?android:actionBarSize">
 
-        <ImageView
-            android:id="@+id/menu_icon"
-            android:layout_centerVertical="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/icon_hamburger_menu">
-        </ImageView>
-
         <TextView
             android:fontFamily="sans-serif"
             android:textStyle="italic"
@@ -34,17 +26,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_Collections"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/b_icons"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"></androidx.recyclerview.widget.RecyclerView>
 
         <RelativeLayout
             android:paddingTop="10dp"
@@ -78,12 +71,13 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/upload_image_btn"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/icon_uploads">
+                    android:src="@drawable/collections">
                 </ImageView>
 
                 <ImageView

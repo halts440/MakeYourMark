@@ -5,26 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SellerMainPage"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:paddingLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize">
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/icon_hamburger_menu">
-        </ImageView>
-
-
-    </RelativeLayout>
+    android:orientation="vertical"
+    android:background="#b7c7c2">
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,24 +27,53 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_margin="20dp"
-                    android:id="@+id/pImage"
-                    android:layout_gravity="center"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:src="@drawable/default_image">
-                </de.hdodenhof.circleimageview.CircleImageView>
-
-                <TextView
-                    android:layout_margin="20dp"
-                    android:id="@+id/bName"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/user_info"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Business Name">
-                </TextView>
+                    android:orientation="horizontal">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_margin="10dp"
+                        android:id="@+id/bImage"
+                        android:layout_gravity="center"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:src="@drawable/default_image">
+                    </de.hdodenhof.circleimageview.CircleImageView>
+
+                    <LinearLayout
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:textSize="18dp"
+                            android:textColor="@color/white"
+                            android:layout_margin="10dp"
+                            android:id="@+id/bName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Business Name">
+                        </TextView>
+
+                        <TextView
+                            android:textSize="18dp"
+                            android:textColor="@color/white"
+                            android:layout_margin="10dp"
+                            android:id="@+id/balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:text="Balance: ">
+                        </TextView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:backgroundTint="@color/teal_700"
@@ -84,7 +99,7 @@
                         android:id="@+id/totalSales"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="9"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="35dp"></TextView>
 
@@ -114,7 +129,7 @@
                         android:id="@+id/salesToday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:text="0"
                         android:textColor="@color/white"
                         android:textSize="35dp"></TextView>
 
@@ -133,7 +148,7 @@
                         android:textSize="18dp"
                         android:elevation="5dp"
                         android:textColor="@color/white"
-                        android:backgroundTint="#DC00FF"
+                        android:backgroundTint="#a349ba"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
@@ -152,7 +167,7 @@
                         android:textSize="20dp"
                         android:elevation="5dp"
                         android:textColor="@color/white"
-                        android:backgroundTint="#DC00FF"
+                        android:backgroundTint="#a349ba"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
@@ -167,8 +182,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/view_orders"
-                    android:background="#43C862"
+                    android:background="@drawable/rounded_background"
+                    android:id="@+id/view_orders_btn"
+                    android:backgroundTint="#43C862"
                     android:layout_marginTop="15dp"
                     android:padding="50dp"
                     android:gravity="center"

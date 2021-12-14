@@ -1,10 +1,12 @@
 package com.humayunafzal.makeyourmark;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,14 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
         holder.getpName().setText( localData.get(position).getName() );
         holder.getpPrice().setText( "Price: " + localData.get(position).getPrice() );
         holder.getpStock().setText( "Stock: " + localData.get(position).getStock() );
+        holder.getwProduct().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(c, ModifyProduct.class);
+                intent.putExtra("product_id", localData.get(position).getProductId() );
+                c.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -51,6 +61,7 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
         private final TextView pName;
         private final TextView pPrice;
         private final TextView pStock;
+        private final LinearLayout wProduct;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +71,7 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
             pName = itemView.findViewById(R.id.pName);
             pPrice = itemView.findViewById(R.id.pPrice);
             pStock = itemView.findViewById(R.id.pStock);
+            wProduct = itemView.findViewById(R.id.wProduct);
         }
 
         public ImageView getpImage() {
@@ -77,5 +89,7 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
         public TextView getpStock() {
             return pStock;
         }
+
+        public LinearLayout getwProduct() { return wProduct; }
     }
 }

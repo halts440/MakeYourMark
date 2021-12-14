@@ -10,9 +10,13 @@
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_buyer_signup.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_collections.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_modify_product.xml" value="0.16" />
+        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_modify_user_info_buyer.xml" value="0.153125" />
+        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_modify_user_info_seller.xml" value="0.153125" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_product_details.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_seller_all_products.xml" value="0.33" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_seller_main_page.xml" value="0.18206521739130435" />
+        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_seller_orders.xml" value="0.153125" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_seller_signup.xml" value="0.5" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_sign_in.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/activity_sign_up_options.xml" value="0.33" />
@@ -25,7 +29,8 @@
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/layout_seller_navigation.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/layout_seller_order_item.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/seller_all_products_item.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/view_order_item.xml" value="0.153125" />
+        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/layout/view_order_item.xml" value="0.22" />
+        <entry key="..\:/Users/Humayun/AndroidStudioProjects/MakeYourMark/app/src/main/res/menu/buyer_menu.xml" value="0.153125" />
       </map>
     </option>
   </component>

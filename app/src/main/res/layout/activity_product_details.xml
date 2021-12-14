@@ -7,21 +7,6 @@
     tools:context=".ProductDetails"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:paddingLeft="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="?android:actionBarSize">
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/icon_hamburger_menu">
-        </ImageView>
-
-
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
