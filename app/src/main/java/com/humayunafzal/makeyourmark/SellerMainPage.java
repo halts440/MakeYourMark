@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,16 +26,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SellerMainPage extends AppCompatActivity {
 
     TextView totalSales, salesToday;
-    String phone;
+    String userId;
     FirebaseDatabase database;
     DatabaseReference usersRef, sellerOrdersRef, ordersRef;
     TextView add_product_btn, manage_products_btn, balance;
     LinearLayout view_orders_btn;
     int countSalesToday, countTotalSales;
     LinearLayout userInfo;
-
+    Button logoutBtn;
     CircleImageView bImage;
     TextView bName;
+    AppDBHandler dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +57,13 @@ public class SellerMainPage extends AppCompatActivity {
         view_orders_btn = findViewById(R.id.view_orders_btn);
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference("users");
-        phone = "03167334892"; //getIntent().getStringExtra("phone");
-        sellerOrdersRef = database.getReference("orders_by_seller").child( phone );
+        userId = getIntent().getStringExtra("user_id");
+        Log.d("abc", ""+userId);
+        sellerOrdersRef = database.getReference("orders_by_seller").child( userId );
         ordersRef = database.getReference("orders");
-        usersRef.child( phone ).addValueEventListener(new ValueEventListener() {
+        logoutBtn = findViewById(R.id.logout_btn);
+        dbHelper = new AppDBHandler( this );
+        usersRef.child( userId ).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if( snapshot.getValue() != null ){
@@ -74,7 +81,7 @@ public class SellerMainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SellerMainPage.this, AddProduct.class);
-                intent.putExtra("phone", phone);
+                intent.putExtra("phone", userId);
                 startActivity(intent);
             }
         });
@@ -83,7 +90,7 @@ public class SellerMainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SellerMainPage.this, SellerAllProducts.class);
-                intent.putExtra("phone", phone);
+                intent.putExtra("phone", userId);
                 startActivity(intent);
             }
         });
@@ -92,7 +99,7 @@ public class SellerMainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SellerMainPage.this, SellerOrders.class);
-                intent.putExtra("user_id", phone);
+                intent.putExtra("user_id", userId);
                 startActivity(intent);
             }
         });
@@ -129,10 +136,22 @@ public class SellerMainPage extends AppCompatActivity {
             @Override
             public boolean onLongClick(View view) {
                 Intent intent = new Intent(SellerMainPage.this, ModifyUserInfoSeller.class);
-                intent.putExtra("user_id", phone );
+                intent.putExtra("user_id", userId );
                 startActivity(intent);
                 return true;
             }
         });
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                dbHelper.getWritableDatabase().execSQL("Update userInfo SET phone='" + userId + "' , status = '2' " );
+                Intent intent = new Intent( SellerMainPage.this, SignIn.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+
     }
 }

@@ -21,7 +21,7 @@ public class SellerAllProducts extends AppCompatActivity {
 
     RecyclerView rv_sellerAllProducts;
     FirebaseDatabase database;
-    DatabaseReference productsRef;
+    DatabaseReference productsRef, sellerProductsRef;
     List<Product> allProducts;
 
     @Override
@@ -33,28 +33,31 @@ public class SellerAllProducts extends AppCompatActivity {
         productsRef = database.getReference("products");
         rv_sellerAllProducts = findViewById(R.id.rv_sellerAllProducts);
         allProducts = new ArrayList<>();
+        sellerProductsRef = database.getReference("products_by_seller");
 
         rv_sellerAllProducts.setLayoutManager(new LinearLayoutManager(this) );
         rv_sellerAllProducts.setAdapter(new SellerAllProductsAdapter(this, allProducts));
 
-        productsRef.addValueEventListener(new ValueEventListener() {
+        sellerProductsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if( snapshot.getValue() != null ) {
                     allProducts.clear();
-                    for(DataSnapshot ds : snapshot.getChildren() ) {
-                        Product p = ds.getValue(Product.class);
-                        allProducts.add(p);
+                    for( DataSnapshot ds: snapshot.getChildren() ){
+                        productsRef.child( ds.getKey() ).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                allProducts.add( ds.getValue(Product.class) );
+                                rv_sellerAllProducts.getAdapter().notifyDataSetChanged();
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) { }
+                        });
                     }
-                    rv_sellerAllProducts.getAdapter().notifyDataSetChanged();
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
-
     }
 }

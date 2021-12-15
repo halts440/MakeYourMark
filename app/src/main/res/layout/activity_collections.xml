@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/all_collections"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
@@ -62,12 +63,13 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/camera_btn"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/icon_camera">
+                    android:src="@drawable/camera">
                 </ImageView>
 
                 <ImageView
@@ -81,6 +83,7 @@
                 </ImageView>
 
                 <ImageView
+                    android:id="@+id/my_collections"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_centerVertical="true"

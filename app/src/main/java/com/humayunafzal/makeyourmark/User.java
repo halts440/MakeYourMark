@@ -7,17 +7,19 @@ public class User {
     private String imagePath;
     private String type;
     private String balance;
+    private String playerId;
 
     public User() {
     }
 
-    public User(String name, String phone, String location, String imagePath, String type, String balance) {
+    public User(String name, String phone, String location, String imagePath, String type, String balance, String playerId) {
         this.name = name;
         this.phone = phone;
         this.location = location;
         this.imagePath = imagePath;
         this.type = type;
         this.balance = balance;
+        this.playerId = playerId;
     }
 
     public String getName() {
@@ -66,5 +68,13 @@ public class User {
 
     public void setBalance(String balance) {
         this.balance = balance;
+    }
+
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
     }
 }

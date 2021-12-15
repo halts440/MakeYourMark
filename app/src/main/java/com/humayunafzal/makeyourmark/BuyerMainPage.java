@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +39,9 @@ public class BuyerMainPage extends AppCompatActivity {
     ImageView searchImg, ordersImg, collectionsImg;
     CircleImageView uImage;
     TextView uName, balance;
+    LinearLayout userInfo;
+    Button logoutBtn;
+    AppDBHandler dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class BuyerMainPage extends AppCompatActivity {
         productsByCatRef1 = database.getReference("products_by_cat").child( categories[0] );
         productsByCatRef2 = database.getReference("products_by_cat").child( categories[1] );
         productsByCatRef3 = database.getReference("products_by_cat").child( categories[2] );
-        userId = "03674348951";//getIntent().getStringExtra("user_id");
+        userId = getIntent().getStringExtra("user_id");
         searchImg = findViewById(R.id.searchImg);
         ordersImg = findViewById(R.id.ordersImg);
         collectionsImg = findViewById(R.id.collectionsImg);
@@ -58,6 +64,9 @@ public class BuyerMainPage extends AppCompatActivity {
         uName = findViewById(R.id.uName);
         balance = findViewById(R.id.balance);
         userRef = database.getReference("users").child( userId );
+        userInfo = findViewById(R.id.user_info);
+        logoutBtn = findViewById(R.id.logout_btn);
+        dbHelper = new AppDBHandler( this );
 
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -76,7 +85,7 @@ public class BuyerMainPage extends AppCompatActivity {
         searchImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BuyerMainPage.this, Collections.class);
+                Intent intent = new Intent(BuyerMainPage.this, SearchProducts.class);
                 intent.putExtra("user_id", userId);
                 startActivity(intent);
             }
@@ -85,7 +94,7 @@ public class BuyerMainPage extends AppCompatActivity {
         ordersImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BuyerMainPage.this, Collections.class);
+                Intent intent = new Intent(BuyerMainPage.this, BuyerOrders.class);
                 intent.putExtra("user_id", userId);
                 startActivity(intent);
             }
@@ -183,6 +192,27 @@ public class BuyerMainPage extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
+        userInfo.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent intent = new Intent(BuyerMainPage.this, ModifyUserInfoBuyer.class);
+                intent.putExtra("user_id", userId);
+                startActivity(intent);
+                return true;
+            }
+        });
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                dbHelper.getWritableDatabase().execSQL("Update userInfo SET phone='" + userId + "' , status = '2' " );
+                Intent intent = new Intent( BuyerMainPage.this, SignIn.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
         });
 
     }

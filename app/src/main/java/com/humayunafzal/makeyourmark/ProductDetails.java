@@ -55,7 +55,7 @@ public class ProductDetails extends AppCompatActivity {
         ordersByBuyerRef = database.getReference("orders_by_buyer");
         ordersBySellerRef = database.getReference("orders_by_seller");
         p = new Product();
-        userId = "hello";//getIntent().getStringExtra("user_id");
+        userId = getIntent().getStringExtra("user_id");
         quantity.setMinValue(1);
         quantity.setMaxValue(10);
 
@@ -75,6 +75,9 @@ public class ProductDetails extends AppCompatActivity {
         buy_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // get stock value
+                //int stockVal = productsRef.child( p.getProductId() );
+
                 String order_id = UUID.randomUUID().toString();
                 String orderDate = LocalDate.now().toString();
 

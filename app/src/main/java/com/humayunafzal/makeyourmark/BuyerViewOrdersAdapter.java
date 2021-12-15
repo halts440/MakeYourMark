@@ -30,13 +30,13 @@ public class BuyerViewOrdersAdapter extends RecyclerView.Adapter<BuyerViewOrders
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getoId().setText( localData.get(position).getOrderId() );
-        holder.getpName().setText( localData.get(position).getProductId() );
-        holder.getpPrice().setText( localData.get(position).getUnitPrice() );
-        holder.getoQuantity().setText( localData.get(position).getQuantity() );
-        holder.getoTotal().setText( String.valueOf( Integer.valueOf( localData.get(position).getUnitPrice()) * Integer.valueOf(localData.get(position).getQuantity()) ));
-        holder.getoUser().setText( localData.get(position).getStoreId() );
-        holder.getoDateTime().setText( localData.get(position).getTime() + " " + localData.get(position).getDate() );
+        holder.getoId().setText( "Order ID: " + localData.get(position).getOrderId() );
+        holder.getpName().setText( "Product ID: " + localData.get(position).getProductId() );
+        holder.getpPrice().setText( "Price: " + localData.get(position).getUnitPrice() );
+        holder.getoQuantity().setText( "Quantity: " + localData.get(position).getQuantity() );
+        holder.getoTotal().setText( "Total: " + String.valueOf( Integer.valueOf( localData.get(position).getUnitPrice()) * Integer.valueOf(localData.get(position).getQuantity()) ));
+        holder.getoUser().setText( "Seller: " + localData.get(position).getStoreId() );
+        holder.getoDateTime().setText( "Date Time: " + localData.get(position).getTime() + " " + localData.get(position).getDate() );
     }
 
     @Override

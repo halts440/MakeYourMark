@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,12 +51,13 @@ public class BuyerOrders extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 Order order = snapshot.getValue(Order.class);
                                 orders.add( order );
+                                rv_Orders.getAdapter().notifyDataSetChanged();
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) { }
                         });
                     }
-                    rv_Orders.getAdapter().notifyDataSetChanged();
+
                 }
             }
             @Override

@@ -5,6 +5,12 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MakeYourMark"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".OTPVerification"
+            android:exported="false" />
+        <activity
+            android:name=".SearchProducts"
+            android:exported="false" />
         <activity
             android:name=".ModifyUserInfoBuyer"
             android:exported="false" />
@@ -29,19 +41,19 @@
         <activity android:name=".SearchResults" />
         <activity android:name=".AddProduct" />
         <activity android:name=".ProductDetails" />
-        <activity android:name=".BuyerMainPage" />
-        <activity android:name=".SellerMainPage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name=".BuyerMainPage">
         </activity>
+        <activity android:name=".SellerMainPage"></activity>
         <activity android:name=".SellerSignup" />
         <activity android:name=".BuyerSignup" />
         <activity android:name=".SignUpOptions" />
         <activity android:name=".SignIn" />
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".MainActivity" />
     </application>
 

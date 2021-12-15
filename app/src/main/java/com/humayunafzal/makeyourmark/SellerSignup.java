@@ -52,24 +52,23 @@ public class SellerSignup extends AppCompatActivity {
     EditText businessName, phone, location;
     ImageView business_logo;
     Button create_btn;
-    String postUrl;
     FirebaseDatabase database;
     DatabaseReference usersRef;
     FirebaseStorage storage;
     StorageReference logosRef;
-
+    AppDBHandler dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_signup);
 
+        dbHelper = new AppDBHandler( this );
         businessName = findViewById(R.id.business_name);
         phone = findViewById(R.id.phone);
         location = findViewById(R.id.location);
         create_btn = findViewById(R.id.create_btn);
         business_logo = findViewById(R.id.business_logo);
-        postUrl = "http://"+getString(R.string.my_ip_address)+"/mym/CheckEmailBName.php";
 
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference("users");
@@ -100,12 +99,13 @@ public class SellerSignup extends AppCompatActivity {
                             res.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    User newUser = new User(businessName.getText().toString(), phone.getText().toString(), location.getText().toString(), uri.toString(), "s", "10000" );
+                                    User newUser = new User(businessName.getText().toString(), phone.getText().toString(), location.getText().toString(), uri.toString(), "s", "10000", "-" );
                                     usersRef.child( phone.getText().toString() ).setValue(newUser);
                                     Toast.makeText(SellerSignup.this, "Account created successfully", Toast.LENGTH_LONG).show();
 
                                     Intent intent = new Intent(SellerSignup.this, SellerMainPage.class);
-                                    intent.putExtra("phone", phone.getText().toString() );
+                                    intent.putExtra("user_id", phone.getText().toString() );
+                                    dbHelper.getWritableDatabase().execSQL("Update userInfo SET phone='" + phone.getText().toString() + "' , status = '1' " );
                                     startActivity(intent);
                                 }
                             });

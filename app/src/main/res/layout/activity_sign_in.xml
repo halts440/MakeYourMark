@@ -44,37 +44,23 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email">
+                    android:text="Phone">
                 </TextView>
 
                 <EditText
-                    android:id="@+id/lEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </EditText>
-
-                <TextView
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Password">
-                </TextView>
-
-                <EditText
-                    android:id="@+id/lPassword"
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </EditText>
 
                 <Button
-                    android:id="@+id/lSignIn"
+                    android:id="@+id/gen_otp_btn"
                     android:textColor="@color/white"
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign In"
+                    android:text="Generate OTP"
                     android:background="@color/dark_pink">
                 </Button>
 
