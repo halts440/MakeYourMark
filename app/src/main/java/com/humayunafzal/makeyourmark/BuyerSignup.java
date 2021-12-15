@@ -23,6 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.onesignal.OneSignal;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -83,7 +87,7 @@ public class BuyerSignup extends AppCompatActivity {
                             res.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    User newUser = new User(userName.getText().toString(), phone.getText().toString(), location.getText().toString(), uri.toString(), "b", "10000", "-" );
+                                    User newUser = new User(userName.getText().toString(), phone.getText().toString(), location.getText().toString(), uri.toString(), "b", "10000", OneSignal.getDeviceState().getUserId() );
                                     usersRef.child( phone.getText().toString() ).setValue(newUser);
                                     Toast.makeText(BuyerSignup.this, "Account created successfully", Toast.LENGTH_LONG).show();
 

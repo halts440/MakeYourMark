@@ -56,7 +56,7 @@ public class AddProduct extends AppCompatActivity {
         pImage = findViewById(R.id.pImage);
         pCategory = findViewById(R.id.pCategory);
         pAdd = findViewById(R.id.pAdd);
-        storeId = getIntent().getStringExtra("phone");
+        storeId = getIntent().getStringExtra("user_id");
         database = FirebaseDatabase.getInstance();
         productsRef = database.getReference("products");
         productsByCatRef = database.getReference("products_by_cat");

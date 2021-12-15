@@ -17,7 +17,7 @@
     </ImageView>
 
     <LinearLayout
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="15dp"
         android:layout_gravity="center_vertical"
         android:orientation="vertical"
         android:layout_weight="2"

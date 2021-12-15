@@ -58,7 +58,6 @@ public class SellerMainPage extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         usersRef = database.getReference("users");
         userId = getIntent().getStringExtra("user_id");
-        Log.d("abc", ""+userId);
         sellerOrdersRef = database.getReference("orders_by_seller").child( userId );
         ordersRef = database.getReference("orders");
         logoutBtn = findViewById(R.id.logout_btn);
@@ -81,7 +80,7 @@ public class SellerMainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SellerMainPage.this, AddProduct.class);
-                intent.putExtra("phone", userId);
+                intent.putExtra("user_id", userId);
                 startActivity(intent);
             }
         });
@@ -90,7 +89,7 @@ public class SellerMainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SellerMainPage.this, SellerAllProducts.class);
-                intent.putExtra("phone", userId);
+                intent.putExtra("user_id", userId);
                 startActivity(intent);
             }
         });
@@ -116,16 +115,16 @@ public class SellerMainPage extends AppCompatActivity {
                         ordersRef.child( ds.getKey() ).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if( snapshot.getValue(Order.class).getDate() == dateToday ) {
+                                if( snapshot.getValue(Order.class).getDate().equals(dateToday) ) {
                                     countSalesToday += 1;
+                                    totalSales.setText( String.valueOf(countTotalSales) );
+                                    salesToday.setText( String.valueOf(countSalesToday) );
                                 }
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) { }
                         });
                     }
-                    totalSales.setText( String.valueOf(countTotalSales) );
-                    salesToday.setText( String.valueOf(countSalesToday) );
                 }
             }
             @Override

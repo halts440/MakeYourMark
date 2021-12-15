@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onesignal.OneSignal;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -26,11 +27,19 @@ public class SplashScreen extends AppCompatActivity {
     Intent intent;
     FirebaseDatabase database;
     DatabaseReference userRef;
+    private static final String ONESIGNAL_APP_ID = "b81ab761-dbd5-4c66-893f-31760bf5213a";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        // OneSignal setup
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+        OneSignal.initWithContext(this);
+        OneSignal.setAppId(ONESIGNAL_APP_ID);
+
+
 
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         dbHelper = new AppDBHandler(this);
@@ -60,7 +69,7 @@ public class SplashScreen extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if( snapshot.getValue() != null ) {
                                 User user = snapshot.getValue(User.class);
-                                if( user.getType() == "b")
+                                if( user.getType().equals("b") )
                                     intent = new Intent(SplashScreen.this, BuyerMainPage.class);
                                 else
                                     intent = new Intent(SplashScreen.this, SellerMainPage.class);

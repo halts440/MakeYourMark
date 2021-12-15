@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.LinkAddress;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +24,7 @@ public class SellerAllProducts extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference productsRef, sellerProductsRef;
     List<Product> allProducts;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,8 @@ public class SellerAllProducts extends AppCompatActivity {
         productsRef = database.getReference("products");
         rv_sellerAllProducts = findViewById(R.id.rv_sellerAllProducts);
         allProducts = new ArrayList<>();
-        sellerProductsRef = database.getReference("products_by_seller");
+        userId = getIntent().getStringExtra("user_id");
+        sellerProductsRef = database.getReference("products_by_store").child( userId );
 
         rv_sellerAllProducts.setLayoutManager(new LinearLayoutManager(this) );
         rv_sellerAllProducts.setAdapter(new SellerAllProductsAdapter(this, allProducts));
@@ -46,8 +49,8 @@ public class SellerAllProducts extends AppCompatActivity {
                     for( DataSnapshot ds: snapshot.getChildren() ){
                         productsRef.child( ds.getKey() ).addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                allProducts.add( ds.getValue(Product.class) );
+                            public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                                allProducts.add( snapshot2.getValue(Product.class) );
                                 rv_sellerAllProducts.getAdapter().notifyDataSetChanged();
                             }
                             @Override

@@ -116,6 +116,7 @@ public class OTPVerification extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                                Log.d("abc", "agcjhdjfds");
                                 userRef.child( "0" + phoneNumber.substring(3) ).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
