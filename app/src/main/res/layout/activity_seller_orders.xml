@@ -32,6 +32,7 @@
                 </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:paddingBottom="50dp"
                     android:id="@+id/rv_Orders"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

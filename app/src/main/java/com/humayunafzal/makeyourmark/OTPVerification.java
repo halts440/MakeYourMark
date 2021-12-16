@@ -73,7 +73,7 @@ public class OTPVerification extends AppCompatActivity {
 
     private void sendVerificationCode(String mobile) {
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
-                .setPhoneNumber(phoneNumber)       // Phone number to verify
+                .setPhoneNumber(mobile)       // Phone number to verify
                 .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                 .setActivity(this)                 // Activity (for callback binding)
                 .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
@@ -106,17 +106,16 @@ public class OTPVerification extends AppCompatActivity {
 
 
     private void verifyVerificationCode(String code) {
+        Log.d("abc", "Code: "+code+" Phone Number: "+phoneNumber);
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
         signInWithPhoneAuthCredential(credential);
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(OTPVerification.this, new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithCredential(credential).addOnCompleteListener(OTPVerification.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                                Log.d("abc", "agcjhdjfds");
                                 userRef.child( "0" + phoneNumber.substring(3) ).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -125,7 +124,7 @@ public class OTPVerification extends AppCompatActivity {
                                             dbHelper.getWritableDatabase().execSQL("Update userInfo SET phone='" + "0" + phoneNumber.substring(3) + "' , status = '1' " );
 
                                             Intent intent = new Intent();
-                                            if( user.getType() == "b")
+                                            if( user.getType().equals("b") )
                                                 intent = new Intent(OTPVerification.this, BuyerMainPage.class);
                                             else
                                                 intent = new Intent(OTPVerification.this, SellerMainPage.class);

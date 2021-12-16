@@ -2,6 +2,7 @@ package com.humayunafzal.makeyourmark;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -31,15 +33,22 @@ public class SearchProductsAdapter extends RecyclerView.Adapter<SearchProductsAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()) .inflate(R.layout.buyer_main_page_product_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()) .inflate(R.layout.search_product_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if( position == getItemCount()-1 ) {
+            holder.getLine().setBackgroundColor(Color.parseColor("#FAFAFA"));
+        }
+        else {
+            holder.getLine().setBackgroundColor(Color.parseColor("#c9c9c9"));
+        }
         Picasso.get().load( localData.get(position).getImage() ).into( holder.getpImage() );
         holder.getpName().setText( localData.get(position).getName() );
         holder.getpPrice().setText( "Price: " + localData.get(position).getPrice() );
+        holder.getpStock().setText( "Stock: " + localData.get(position).getStock() );
         holder.getProd().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,10 +68,12 @@ public class SearchProductsAdapter extends RecyclerView.Adapter<SearchProductsAd
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         // all the views in call history item layout
-        private final ImageView pImage;
+        private final RoundedImageView pImage;
         private final TextView pName;
         private final TextView pPrice;
+        private final TextView pStock;
         private final LinearLayout prod;
+        private final View line;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,10 +82,12 @@ public class SearchProductsAdapter extends RecyclerView.Adapter<SearchProductsAd
             pImage = itemView.findViewById(R.id.pImage);
             pName = itemView.findViewById(R.id.pName);
             pPrice = itemView.findViewById(R.id.pPrice);
+            pStock = itemView.findViewById(R.id.pStock);
             prod = itemView.findViewById(R.id.prod);
+            line = itemView.findViewById(R.id.line);
         }
 
-        public ImageView getpImage() {
+        public RoundedImageView getpImage() {
             return pImage;
         }
 
@@ -87,5 +100,13 @@ public class SearchProductsAdapter extends RecyclerView.Adapter<SearchProductsAd
         }
 
         public LinearLayout getProd() { return prod; }
+
+        public TextView getpStock() {
+            return pStock;
+        }
+
+        public View getLine() {
+            return line;
+        }
     }
 }

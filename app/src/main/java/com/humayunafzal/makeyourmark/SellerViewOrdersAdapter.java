@@ -1,9 +1,11 @@
 package com.humayunafzal.makeyourmark;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,6 +32,12 @@ public class SellerViewOrdersAdapter extends RecyclerView.Adapter<SellerViewOrde
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if( position%2 == 0 ) {
+            holder.getoItem().setBackgroundColor(Color.parseColor("#b0cdd6") );
+        }
+        else {
+            holder.getoItem().setBackgroundColor(Color.parseColor("#FAFAFA") );
+        }
         holder.getoId().setText( "Order ID: " + localData.get(position).getOrderId() );
         holder.getpName().setText( "Product ID: " + localData.get(position).getProductId() );
         holder.getpPrice().setText( "Price: " + localData.get(position).getUnitPrice() );
@@ -53,6 +61,7 @@ public class SellerViewOrdersAdapter extends RecyclerView.Adapter<SellerViewOrde
         private final TextView oTotal;
         private final TextView oUser;
         private final TextView oDateTime;
+        private final LinearLayout oItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,6 +73,7 @@ public class SellerViewOrdersAdapter extends RecyclerView.Adapter<SellerViewOrde
             oTotal = itemView.findViewById(R.id.oTotal);
             oUser = itemView.findViewById(R.id.oUser);
             oDateTime = itemView.findViewById(R.id.oDateTime);
+            oItem = itemView.findViewById(R.id.order_item);
         }
 
         public TextView getoId() {
@@ -92,6 +102,10 @@ public class SellerViewOrdersAdapter extends RecyclerView.Adapter<SellerViewOrde
 
         public TextView getoDateTime() {
             return oDateTime;
+        }
+
+        public LinearLayout getoItem() {
+            return oItem;
         }
     }
 }

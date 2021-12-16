@@ -48,7 +48,7 @@ public class BuyerMainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_main_page);
 
-        categories = new String[]{"laptop", "Pencil Colors", "Notebooks"};
+        categories = new String[]{"laptop", "calculator", "notebooks"};
         database = FirebaseDatabase.getInstance();
         productsRef1 = database.getReference("products");
         productsRef2 = database.getReference("products");
@@ -144,6 +144,7 @@ public class BuyerMainPage extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             productList1.add( snapshot.getValue(Product.class) );
                             rv_BMP1.getAdapter().notifyDataSetChanged();
+                            rv_BMP1.scrollToPosition( productList1.size() - 1 );
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
@@ -164,6 +165,7 @@ public class BuyerMainPage extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             productList2.add( snapshot.getValue(Product.class) );
                             rv_BMP2.getAdapter().notifyDataSetChanged();
+                            rv_BMP2.scrollToPosition( productList2.size() - 1 );
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
@@ -184,6 +186,7 @@ public class BuyerMainPage extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             productList3.add( snapshot.getValue(Product.class) );
                             rv_BMP3.getAdapter().notifyDataSetChanged();
+                            rv_BMP3.scrollToPosition( productList3.size() - 1 );
                         }
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) { }
@@ -207,7 +210,8 @@ public class BuyerMainPage extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
+                if( FirebaseAuth.getInstance().getCurrentUser() != null )
+                    FirebaseAuth.getInstance().signOut();
                 dbHelper.getWritableDatabase().execSQL("Update userInfo SET phone='" + userId + "' , status = '2' " );
                 Intent intent = new Intent( BuyerMainPage.this, SignIn.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

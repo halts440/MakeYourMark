@@ -1,5 +1,6 @@
 package com.humayunafzal.makeyourmark;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -35,11 +37,15 @@ public class BuyerMainPageProductsAdapter extends RecyclerView.Adapter<BuyerMain
         return new ViewHolder(view);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Picasso.get().load( localData.get(position).getImage() ).into( holder.getpImage() );
-        holder.getpName().setText( localData.get(position).getName() );
-        holder.getpPrice().setText( "Price: " + localData.get(position).getPrice() );
+        if( localData.get(position).getName().length() > 35 )
+            holder.getpName().setText( localData.get(position).getName().substring(0, 35) + "..." );
+        else
+            holder.getpName().setText( localData.get(position).getName() );
+        holder.getpPrice().setText( "Price: " + localData.get(position).getPrice() + " Rs" );
         holder.getProd().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +65,7 @@ public class BuyerMainPageProductsAdapter extends RecyclerView.Adapter<BuyerMain
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         // all the views in call history item layout
-        private final ImageView pImage;
+        private final RoundedImageView pImage;
         private final TextView pName;
         private final TextView pPrice;
         private final LinearLayout prod;
@@ -74,7 +80,7 @@ public class BuyerMainPageProductsAdapter extends RecyclerView.Adapter<BuyerMain
             prod = itemView.findViewById(R.id.prod);
         }
 
-        public ImageView getpImage() {
+        public RoundedImageView getpImage() {
             return pImage;
         }
 

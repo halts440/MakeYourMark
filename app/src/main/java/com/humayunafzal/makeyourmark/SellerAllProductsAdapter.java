@@ -2,6 +2,7 @@ package com.humayunafzal.makeyourmark;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -35,6 +37,10 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if( position%2 == 0 )
+            holder.getwProduct().setBackgroundColor(Color.parseColor("#fae8cf"));
+        else
+            holder.getwProduct().setBackgroundColor(Color.parseColor("#e6d3ba"));
         Picasso.get().load( localData.get(position).getImage() ).into( holder.getpImage() );
         holder.getpName().setText( localData.get(position).getName() );
         holder.getpPrice().setText( "Price: " + localData.get(position).getPrice() );
@@ -57,7 +63,7 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         // all the views in call history item layout
-        private final ImageView pImage;
+        private final RoundedImageView pImage;
         private final TextView pName;
         private final TextView pPrice;
         private final TextView pStock;
@@ -74,7 +80,7 @@ public class SellerAllProductsAdapter extends RecyclerView.Adapter<SellerAllProd
             wProduct = itemView.findViewById(R.id.wProduct);
         }
 
-        public ImageView getpImage() {
+        public RoundedImageView getpImage() {
             return pImage;
         }
 

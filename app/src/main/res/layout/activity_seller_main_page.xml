@@ -184,7 +184,7 @@
                 <LinearLayout
                     android:background="@drawable/rounded_background"
                     android:id="@+id/view_orders_btn"
-                    android:backgroundTint="#43C862"
+                    android:backgroundTint="#4D5F95"
                     android:layout_marginTop="15dp"
                     android:padding="50dp"
                     android:gravity="center"
@@ -203,11 +203,12 @@
                 </LinearLayout>
 
                 <Button
+                    android:layout_gravity="center"
                     android:textColor="@color/white"
-                    android:layout_marginTop="20dp"
-                    android:background="@color/prime_blue"
+                    android:layout_marginTop="50dp"
+                    android:background="#EB4132"
                     android:id="@+id/logout_btn"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Log out">
                 </Button>

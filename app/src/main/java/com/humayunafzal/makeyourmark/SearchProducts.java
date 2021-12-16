@@ -57,7 +57,7 @@ public class SearchProducts extends AppCompatActivity {
             public void onClick(View view) {
                 if( searchText.getText().toString().isEmpty() != true ) {
                     String query = searchText.getText().toString().toLowerCase();
-                    searchQueryTitle.setText( "Search Results For: " + searchText.getText().toString() );
+                    searchQueryTitle.setText( searchText.getText().toString() );
                     productsRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
